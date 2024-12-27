@@ -73,6 +73,66 @@ public partial class MainWindow : Window
 For the complete API documentation about this control, see [here](http://reference.avaloniaui.net/api/Avalonia.Controls/Button/).
 :::
 
+:::Button with Svg and animation
+
+
+
+```
+  <Button  MinWidth="280" HorizontalContentAlignment="Center">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                          
+                            <!-- Text Content -->
+                            <TextBlock Text="Login"  Margin="5,0,0,0" />
+                            <!-- SVG Image -->
+                            <Svg Width="16" Height="16" Path="/Assets/svg/up.svg"  />
+
+                        </StackPanel>
+                    </Button.Content>
+
+                    <Button.Styles>
+                        <!-- Default style for the button -->
+                        <Style Selector="Button">
+                            <Setter Property="FontSize" Value="16" />
+                            <Setter Property="Foreground" Value="White" />
+                            <Setter Property="Background" Value="#3574F0" />
+                            <Setter Property="BorderBrush" Value="#3574F0" />
+                            
+                        </Style>
+                        <!-- Hover style for the button -->
+                        <Style Selector="Button:pointerover /template/ ContentPresenter">
+                            <Setter Property="Foreground" Value="Azure" />
+                            <Setter Property="Background" Value="#3397FF" />
+                            <Setter Property="BorderBrush" Value="#5B3397FF" />
+                            <Setter Property="FontWeight" Value="Bold" />
+                            <!--change svg color to black + flip ip 90 degrees-->
+                        </Style>
+                        <Style Selector="Button:pointerover">
+                            <Setter Property="FontSize" Value="18" />
+                        </Style>
+                        
+                        <!-- Hover effect for Image -->
+                        
+                        <Style Selector="Button:pointerover Svg">
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <RotateTransform Angle="90"  />
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                       
+                    </Button.Styles>
+                    
+                    <Button.Transitions>
+                        <Transitions>
+                            <DoubleTransition Property="FontSize" Duration="0:0:0.3" />
+                        </Transitions>
+                    </Button.Transitions>
+                    
+                </Button>
+```
+
+
 :::info
 View the source code on _GitHub_ [`Button.cs`](https://github.com/AvaloniaUI/Avalonia/blob/master/src/Avalonia.Controls/Button.cs)
 :::
